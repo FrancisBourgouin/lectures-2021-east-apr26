@@ -1,0 +1,33 @@
+<%- include('partials/_head.ejs') %>
+
+	<section>
+		<main>
+			<div class="door"></div>
+			<% if(currentUser && currentUser.email==="pontiac@bandit.com" ){ %>
+				<img src="/prize2.webp" />
+				<% } %>
+					<% if(currentUser && currentUser.email==="gentleman@cambrioleur.com" ){ %>
+						<img src="/prize1.gif" />
+						<% } %>
+		</main>
+	</section>
+	<% if(!currentUser){ %>
+		<section>
+			<form action="/login" method="POST" autocomplete="off">
+				<input type="text" name="email" placeholder="Enter your email">
+				<input type="password" name="password" placeholder="Enter your password">
+				<button type="submit">See your cut!</button>
+			</form>
+			<p>No account ? Create one <a href="/register">here</a></p>
+		</section>
+		<% } %>
+			<% if(currentUser){ %>
+				<section>
+					<form action="/logout" method="POST" autocomplete="off">
+						<button type="submit">Get away!</button>
+					</form>
+				</section>
+				<% } %>
+					</body>
+
+					</html>
