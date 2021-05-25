@@ -1,8 +1,10 @@
 # SQL Intro
 
+
+
 ## Content
 
-- Weekend recap
+- Weekend recap.
 - What is a database
 
 - Why should we use it
@@ -11,9 +13,6 @@
 - Creating tables
 - Inserting data
 - Interacting with the data
-
-
-
 
 
 

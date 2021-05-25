@@ -1,4 +1,4 @@
-
+ee
 INSERT INTO authors (name, description, funny) VALUES ('Francis', 'Oh boy, he is a teacher', true); 
 INSERT INTO authors (name, funny, description) VALUES ('Paul', TRUE, 'A student in march01');
 INSERT INTO authors (name, funny, description) VALUES ('Mike', TRUE, 'A student in march01');
