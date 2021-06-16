@@ -79,6 +79,7 @@ const findDay = (days, dayToUpdate) => {
     }
   }, [])
 }
+
 const updateSpots = (state, day) => {
   const dayToUpdate = day || state.day
   // const dayObj = state.days.find(day => day.name === dayToUpdate)
@@ -92,6 +93,32 @@ const updateSpots = (state, day) => {
   newDays[dayObjIndex] = newDay
 
   return { ...state, days: newDays }
+}
+
+const updateSpotsButBetterQuestionMark = (state, day) => {
+  // Let the user choose between the selected day in state or specific day.
+  const dayToUpdate = day || state.day
+
+  // Extract the list of appointment ids, the day object and its id.
+  const { listOfApptIds, dayObj, dayObjIndex } = days.reduce((acc, dayObj, index) => {
+    if (day.name === dayToUpdate) {
+      acc.listOfApptIds = dayObj.appointments
+      acc.dayObj = dayObj
+      acc.dayObjIndex = index
+    }
+  }, {})
+
+  // Extract the number of spots from the appointments object.
+  const spots = listOfApptIds.reduce((spots, apptId) => !state.appointments[apptId].interview && spots + 1, 0)
+
+  // Let's not mutate our things, so spreading step by step here.
+  const newDay = { ...dayObj, spots }
+  const newDays = [...state.days]
+  newDays[dayObjIndex] = newDay
+  const newState = { ...state, days: newDays }
+
+  // Return a new state
+  return newState
 }
 
 const bookInterview = () => {
